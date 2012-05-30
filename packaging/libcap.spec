@@ -7,6 +7,7 @@ Version:        2.21
 Release:        1
 Summary:        Library for getting and setting POSIX
 Source:         http://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/%{name}-%{version}.tar.gz
+Source1001: packaging/libcap.manifest 
 
 License:        LGPLv2+
 Url:            http://ftp.kernel.org/pub/linux/libs/security/linux-privs/kernel-2.6/
@@ -35,6 +36,7 @@ libcap.
 %setup -q
 
 %build
+cp %{SOURCE1001} .
 # libcap can not be build with _smp_mflags:
 make PREFIX=%{_prefix} LIBDIR=%{_lib} SBINDIR=%{_sbindir} \
      INCDIR=%{_includedir} MANDIR=%{_mandir} COPTFLAG="%{optflags}"
@@ -59,11 +61,13 @@ chmod +x %{buildroot}/%{_lib}/*.so.*
 %docs_package
 
 %files
+%manifest libcap.manifest
 %defattr(-,root,root,-)
 /%{_lib}/*.so.*
 %{_sbindir}/*
 
 %files devel
+%manifest libcap.manifest
 %defattr(-,root,root,-)
 %{_includedir}/*
 /%{_lib}/*.so
