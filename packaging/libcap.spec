@@ -52,6 +52,10 @@ rm -f %{buildroot}/%{_lib}/libcap.a
 
 chmod +x %{buildroot}/%{_lib}/*.so.*
 
+# license
+mkdir -p %{buildroot}/usr/share/license
+cp LICENSE.GPLv2 %{buildroot}/usr/share/license/%{name}
+
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
@@ -62,6 +66,7 @@ chmod +x %{buildroot}/%{_lib}/*.so.*
 %defattr(-,root,root,-)
 /%{_lib}/*.so.*
 %{_sbindir}/*
+/usr/share/license/%{name}
 
 %files devel
 %defattr(-,root,root,-)
