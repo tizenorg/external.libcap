@@ -74,3 +74,4 @@ cp License %{buildroot}/usr/share/license/%{name}
 %{_includedir}/*
 /%{_lib}/*.so
 %{_mandir}/*
+
