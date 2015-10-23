@@ -4,8 +4,7 @@
 
 Name:           libcap
 Version:        2.21
-Release:        2
-VCS:            external/libcap#submit/trunk/20121022.071522-2-g987e044673c6ec4df12d1862a80b9a4650499a9b
+Release:        1
 Summary:        Library for getting and setting POSIX
 Source:         http://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/%{name}-%{version}.tar.gz
 
@@ -13,7 +12,6 @@ License:        BSD-2.0 and GPL-2.0
 Url:            http://ftp.kernel.org/pub/linux/libs/security/linux-privs/kernel-2.6/
 Group:          System/Libraries
 BuildRequires:  libattr-devel
-Patch0:         libcap_aslr_20150407.patch 
 
 %description
 libcap is a library for getting and setting POSIX.1e (formerly POSIX 6)
@@ -35,7 +33,6 @@ libcap.
 
 %prep
 %setup -q
-%patch0 -p1 -b .aslr
 
 %build
 # libcap can not be build with _smp_mflags:
